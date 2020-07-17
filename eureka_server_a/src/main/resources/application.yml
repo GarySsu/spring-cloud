@@ -1,0 +1,22 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: eureka-server
+#eureka:
+#  client:
+#    fetch-registry: false
+#    register-with-eureka: false
+#    service-url:
+#      defaultZone: http://127.0.0.1:${server.port}/eureka
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:9999/eureka
+  server:
+    # 修改扫描失效服务间隔时间（默认是60s，单位是毫秒）
+    eviction-interval-timer-in-ms: 5000
+    # 取消自我保护机制（默认true）
+    enable-self-preservation: false

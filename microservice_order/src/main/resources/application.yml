@@ -1,0 +1,29 @@
+server:
+  port: 9011
+spring:
+  application:
+    name: microservice-order
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_example?characterEncoding=UTF8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: rootroot
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    database: mysql
+eureka:
+  client:
+    register-with-eureka: true # As a client, you need to register with Eureka
+    fetch-registry: true       # As a client, you need to obtain registry information from Eureka
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+  instance:
+    prefer-ip-address: true #優先使用該服務的ip地址註冊到eureka
+    # Modify the renewal interval
+    lease-renewal-interval-in-seconds: 5
+    # Modify service expiration time
+    lease-expiration-duration-in-seconds: 10
+feign:
+  hystrix:
+    enabled: true

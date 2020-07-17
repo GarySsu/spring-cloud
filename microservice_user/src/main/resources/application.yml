@@ -1,0 +1,22 @@
+server:
+  port: 9013
+spring:
+  application:
+    name: microservice-user
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_example?characterEncoding=UTF8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: rootroot
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    database: mysql
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+  instance:
+    prefer-ip-address: true
