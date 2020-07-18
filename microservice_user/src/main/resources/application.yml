@@ -7,7 +7,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/spring_cloud_example?characterEncoding=UTF8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: rootroot
+    password: your password
   jpa:
     show-sql: true
     generate-ddl: true
