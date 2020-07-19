@@ -47,10 +47,11 @@
 
 ## Instructions for use:
 ### Eureka
+---
 Microservice Registry. Create two servers, when one of them is broken, the service can keep working.<br>
     <table>
         <tr>
-            <th>Url/th>  <th>Description</th>
+            <th>Url</th>  <th>Description</th>
         </tr>
         <tbody>     
             <tr>
