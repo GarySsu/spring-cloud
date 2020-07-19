@@ -1,12 +1,12 @@
 ## Develop very simple microservices using Spring Cloud, Spring Boot, Eureka Server, Feign, and Hystrix
 
-### Reference Documents:
+## Reference Documents:
 * https://spring.io/projects/spring-cloud
 * https://www.baeldung.com/spring-cloud-netflix-eureka
 * https://www.baeldung.com/spring-cloud-openfeign
 * https://www.baeldung.com/spring-cloud-netflix-hystrix
 
-### Components:
+## Components:
 <table>
     <tr>
         <th>Project Name</th>  <th>Description</th>  <th>Port</th>
@@ -45,8 +45,8 @@
 </tbody>
 </table>
 
-### Instructions for use:
-#### Eureka
+## Instructions for use:
+### Eureka
 Microservice Registry. Create two servers, when one of them is broken, the service can keep working.
     <table>
         <tbody>
@@ -60,7 +60,10 @@ Microservice Registry. Create two servers, when one of them is broken, the servi
             </tr>           
         </tbody>
     </table>
-    1.add EnableEurekaServer annotation
+
+* 1.add EnableEurekaServer annotation
+    
+    
     @SpringBootApplication
     @EnableEurekaServer
     public class EurekaServerApplication {
@@ -71,7 +74,9 @@ Microservice Registry. Create two servers, when one of them is broken, the servi
 
     }
     
-    2.add Eureka server setting
+* 2.add Eureka server setting
+
+
     server:
       port: 9999
     spring:
@@ -93,12 +98,42 @@ Microservice Registry. Create two servers, when one of them is broken, the servi
         eviction-interval-timer-in-ms: 5000
         enable-self-preservation: false
     
-#### Openfeign
-Is used to remotely call microservices.
-    1.When microservice_order use 
-
+### Openfeign
+It is a convenient framework for calling Spring Cloud remote services.
+    <table>
+        <tbody>
+            <tr>
+                <td>http://127.0.0.1:9011/order/4ffcfab8-c765-11ea-826b-6027a2b7af48/</td> 
+                <td>get microservice_order order information and microservice_user user information </td>
+            </tr>        
+        </tbody>
+    </table>
+    
+    response data:
+    {"status":"200","message":"sucess","orderMaster":{"id":1,"orderNum":"4ffcfab8-c765-11ea-826b-6027a2b7af48","game":"Lineage M","device":"mobile","username":"gary ssu","userId":1},"userDto":{"id":1,"username":"gary ssu","address":"New Taipei City","age":20,"lastLoginTime":"2020-07-16 03:00:00"},"orderDetails":null}
 
 #### Hystrix
+Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used
+    <table>
+        <tbody>
+            <tr>
+                <td>http://127.0.0.1:7777/hystrix/</td> 
+                <td>hystrix dashboard </td>
+            </tr>        
+        </tbody>
+    </table>    
+
+* 1.add Hystrix annotation in microservice_order
+    
+    
+    @EnableFeignClients // OpenFeign
+
+* 2.add fallback annotation in your controller
 
 
+    @FeignClient(value = "microservice-user",fallback = UserControllerImpl.class)
+    public interface UserController {
+
+    @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
+    public UserDto getUser(@PathVariable(value = "id") Integer id);
 
