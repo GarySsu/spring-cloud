@@ -49,7 +49,10 @@
 ### Eureka
 Microservice Registry. Create two servers, when one of them is broken, the service can keep working.
     <table>
-        <tbody>
+        <tr>
+            <th>Url/th>  <th>Description</th>
+        </tr>
+        <tbody>     
             <tr>
                 <td>http://127.0.0.1:8888/</td> 
                 <td>Registry</td>
@@ -82,12 +85,6 @@ Microservice Registry. Create two servers, when one of them is broken, the servi
     spring:
       application:
         name: eureka-server
-    #eureka:
-    #  client:
-    #    fetch-registry: false
-    #    register-with-eureka: false
-    #    service-url:
-    #      defaultZone: http://127.0.0.1:${server.port}/eureka
     eureka:
       client:
         fetch-registry: true
