@@ -7,7 +7,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/spring_cloud_example?characterEncoding=UTF8
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: your password
+    password: rootroot
   jpa:
     show-sql: true
     generate-ddl: true
@@ -19,7 +19,7 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
   instance:
-    prefer-ip-address: true #優先使用該服務的ip地址註冊到eureka
+    prefer-ip-address: true # Use the IP address of the service to register to eureka at first
     # Modify the renewal interval
     lease-renewal-interval-in-seconds: 5
     # Modify service expiration time
