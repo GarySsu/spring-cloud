@@ -47,7 +47,7 @@
 
 ## Instructions for use:
 ### Eureka
-#### Microservice Registry. Create two servers, when one of them is broken, the service can keep working. <br>
+Microservice Registry. Create two servers, when one of them is broken, the service can keep working. <br>
     <table>
         <tr>
             <th>Url/th>  <th>Description</th>
@@ -96,7 +96,7 @@
         enable-self-preservation: false
     
 ### Openfeign
-#### It is a convenient framework for calling Spring Cloud remote services. <br>
+It is a convenient framework for calling Spring Cloud remote services. <br>
     <table>
         <tbody>
             <tr>
@@ -110,7 +110,7 @@
     {"status":"200","message":"sucess","orderMaster":{"id":1,"orderNum":"4ffcfab8-c765-11ea-826b-6027a2b7af48","game":"Lineage M","device":"mobile","username":"gary ssu","userId":1},"userDto":{"id":1,"username":"gary ssu","address":"New Taipei City","age":20,"lastLoginTime":"2020-07-16 03:00:00"},"orderDetails":null}
 
 ### Hystrix
-#### Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used <br>
+Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used <br>
     <table>
         <tbody>
             <tr>
