@@ -47,21 +47,21 @@
 
 ## Instructions for use:
 ### Eureka - Create two servers, when one of them is broken, the service can keep working:
-    <table>
-        <tr>
-            <th>Url</th>  <th>Description</th>
-        </tr>
-        <tbody>     
-            <tr>
-                <td>http://127.0.0.1:8888/</td> 
-                <td>Registry</td>
-            </tr>
-            <tr>
-                <td>http://127.0.0.1:9999/</td> 
-                <td>Registry</td>
-            </tr>           
-        </tbody>
-    </table>
+<table>
+   <tr>
+        <th>Url</th>  <th>Description</th>
+   </tr>
+   <tbody>     
+       <tr>
+            <td>http://127.0.0.1:8888/</td> 
+            <td>Registry</td>
+       </tr>
+       <tr>
+          <td>http://127.0.0.1:9999/</td> 
+          <td>Registry</td>
+       </tr>           
+   </tbody>
+</table>
 
 * 1.add EnableEurekaServer annotation
     
