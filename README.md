@@ -49,7 +49,7 @@
 ### Eureka - Create two servers, when one of them is broken, the service can keep working:
 <table>
    <tr>
-        <th>Url</th>  <th>Description</th>
+        <th>Application Address</th>  <th>Description</th>
    </tr>
    <tbody>     
        <tr>
@@ -64,21 +64,12 @@
 </table>
 
 * 1.add EnableEurekaServer annotation
-    
-    
-    @SpringBootApplication
     @EnableEurekaServer
-    public class EurekaServerApplication {
-
-        public static void main(String[] args){
-            SpringApplication.run(EurekaServerApplication.class,args);
-        }
-
-    }
     
-* 2.add Eureka server setting
+    
+* 2.add Eureka server setting in application.yml
 
-
+```yml
     server:
       port: 9999
     spring:
@@ -93,11 +84,11 @@
       server:
         eviction-interval-timer-in-ms: 5000
         enable-self-preservation: false
-    
+```
 ### Openfeign - It is a convenient framework for calling Spring Cloud remote services. <br>
 <table>
     <tr>
-        <th>Url</th>  <th>Description</th>
+        <th>Application Address</th>  <th>Description</th>
     </tr>
     <tbody>
         <tr>
@@ -106,14 +97,15 @@
         </tr>        
     </tbody>
 </table>
-    
-    response data:
+
+```json   
     {"status":"200","message":"sucess","orderMaster":{"id":1,"orderNum":"4ffcfab8-c765-11ea-826b-6027a2b7af48","game":"Lineage M","device":"mobile","username":"gary ssu","userId":1},"userDto":{"id":1,"username":"gary ssu","address":"New Taipei City","age":20,"lastLoginTime":"2020-07-16 03:00:00"},"orderDetails":null}
+```
 
 ### Hystrix - Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used <br>
 <table>
     <tr>
-        <th>Url</th>  <th>Description</th>
+        <th>Application Address</th>  <th>Description</th>
     </tr>
     <tbody>
         <tr>
@@ -123,17 +115,12 @@
     </tbody>
 </table>    
 
-* 1.add Hystrix annotation in microservice_order
-    
-    
+* 1.add Hystrix annotation in microservice_order  
+```yml   
     @EnableFeignClients // OpenFeign
-
+```    
 * 2.add fallback annotation in your controller
-
-
+```yml
     @FeignClient(value = "microservice-user",fallback = UserControllerImpl.class)
-    public interface UserController {
-
-    @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
-    public UserDto getUser(@PathVariable(value = "id") Integer id);
+```    
 
