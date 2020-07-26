@@ -5,6 +5,7 @@
 * https://www.baeldung.com/spring-cloud-netflix-eureka
 * https://www.baeldung.com/spring-cloud-openfeign
 * https://www.baeldung.com/spring-cloud-netflix-hystrix
+* https://spring.io/projects/spring-cloud-gateway
 
 ## Components:
 <table>
@@ -34,9 +35,14 @@
     </tr>
     <tr>
         <td>hystrix_monitor</td>  
-        <td>monitor a single server microservice_order</td>
-        <td>7777</td>
+        <td>Monitor a single server microservice_order</td>
+        <td>8222</td>
     </tr>
+    <tr>
+        <td>microservice_gateway</td>  
+        <td>Has a nice integration with an embedded Zuul proxy</td>
+        <td>7777</td>
+    </tr>    
     <tr>
         <td>flyway_migrations</td>  
         <td>mysql database migrations</td>
@@ -46,7 +52,7 @@
 </table>
 
 ## Instructions for use:
-### Eureka - Create two servers, when one of them is broken, the service can keep working:
+### Eureka - Create two servers, when one of them is broken, the service can keep working. 
 <table>
    <tr>
         <th>Application Address</th>  <th>Description</th>
@@ -64,11 +70,11 @@
 </table>
 
 * 1.add EnableEurekaServer annotation
-    @EnableEurekaServer
-    
+```yml   
+@EnableEurekaServer
+```  
     
 * 2.add Eureka server setting in application.yml
-
 ```yml
     server:
       port: 9999
@@ -85,7 +91,8 @@
         eviction-interval-timer-in-ms: 5000
         enable-self-preservation: false
 ```
-### Openfeign - It is a convenient framework for calling Spring Cloud remote services. <br>
+
+### Openfeign - It is a convenient framework for calling Spring Cloud remote services.
 <table>
     <tr>
         <th>Application Address</th>  <th>Description</th>
@@ -99,7 +106,7 @@
 </table>
 
 ```json   
-    {"status":"200","message":"sucess","orderMaster":{"id":1,"orderNum":"4ffcfab8-c765-11ea-826b-6027a2b7af48","game":"Lineage M","device":"mobile","username":"gary ssu","userId":1},"userDto":{"id":1,"username":"gary ssu","address":"New Taipei City","age":20,"lastLoginTime":"2020-07-16 03:00:00"},"orderDetails":null}
+{"status":"200","message":"sucess","orderMaster":{"id":1,"orderNum":"4ffcfab8-c765-11ea-826b-6027a2b7af48","game":"Lineage M","device":"mobile","username":"gary ssu","userId":1},"userDto":{"id":1,"username":"gary ssu","address":"New Taipei City","age":20,"lastLoginTime":"2020-07-16 03:00:00"},"orderDetails":null}
 ```
 
 ### Hystrix - Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used <br>
@@ -115,12 +122,12 @@
     </tbody>
 </table>    
 
-* 1.add Hystrix annotation in microservice_order  
+* 1.add Hystrix annotation in microservice_order app
 ```yml   
-    @EnableFeignClients // OpenFeign
+@EnableFeignClients // OpenFeign
 ```    
 * 2.add fallback annotation in your controller
 ```yml
-    @FeignClient(value = "microservice-user",fallback = UserControllerImpl.class)
+@FeignClient(value = "microservice-user",fallback = UserControllerImpl.class)
 ```    
 

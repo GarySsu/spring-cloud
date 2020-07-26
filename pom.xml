@@ -15,6 +15,7 @@
         <module>microservice_order</module>
         <module>flyway_migrations</module>
         <module>hystrix_monitor</module>
+        <module>microservice_gateway</module>
     </modules>
 
     <parent>
