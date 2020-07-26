@@ -52,6 +52,21 @@
 </table>
 
 ## Instructions for use:
+### Define Spring Cloud version in parent project
+```pom   
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>Finchley.M9</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+```  
+
 ### Eureka - Create two servers, when one of them is broken, the service can keep working. 
 <table>
    <tr>
@@ -59,18 +74,18 @@
    </tr>
    <tbody>     
        <tr>
-            <td>http://127.0.0.1:8888/</td> 
-            <td>Registry</td>
+        <td>http://127.0.0.1:8888/</td> 
+        <td>Registry</td>
        </tr>
        <tr>
-          <td>http://127.0.0.1:9999/</td> 
-          <td>Registry</td>
+        <td>http://127.0.0.1:9999/</td> 
+        <td>Registry</td>
        </tr>           
    </tbody>
 </table>
 
 * 1.add EnableEurekaServer annotation
-```yml   
+```java   
 @EnableEurekaServer
 ```  
     
@@ -109,7 +124,7 @@
 {"status":"200","message":"sucess","orderMaster":{"id":1,"orderNum":"4ffcfab8-c765-11ea-826b-6027a2b7af48","game":"Lineage M","device":"mobile","username":"gary ssu","userId":1},"userDto":{"id":1,"username":"gary ssu","address":"New Taipei City","age":20,"lastLoginTime":"2020-07-16 03:00:00"},"orderDetails":null}
 ```
 
-### Hystrix - Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used <br>
+### Hystrix - Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used.
 <table>
     <tr>
         <th>Application Address</th>  <th>Description</th>
@@ -125,7 +140,7 @@
 <img src="https://github.com/GarySsu/spring-cloud/blob/master/photo/hystrix.png" width="500">
 
 * 1.add Hystrix annotation in microservice_order app
-```yml   
+```java   
 @EnableFeignClients // OpenFeign
 ```    
 * 2.add fallback annotation in your controller
