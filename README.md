@@ -110,6 +110,7 @@
 ```
 
 ### Hystrix - Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used <br>
+<img src="https://github.com/GarySsu/spring-cloud/blob/master/photo/hystrix.png" width="450">
 <table>
     <tr>
         <th>Application Address</th>  <th>Description</th>
