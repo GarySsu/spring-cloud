@@ -1,0 +1,23 @@
+server:
+  port: 9001
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/GarySsu/spring-cloud-config.git
+management:
+  endpoint:
+    web:
+      exposure:
+        include:

@@ -5,7 +5,7 @@
 * https://www.baeldung.com/spring-cloud-netflix-eureka
 * https://www.baeldung.com/spring-cloud-openfeign
 * https://www.baeldung.com/spring-cloud-netflix-hystrix
-* https://spring.io/projects/spring-cloud-gateway
+* https://www.baeldung.com/spring-rest-with-zuul-proxy
 
 ## Components:
 <table>
@@ -45,7 +45,7 @@
     </tr>    
     <tr>
         <td>flyway_migrations</td>  
-        <td>mysql database migrations</td>
+        <td>Mysql database migrations</td>
         <td>8080</td>
     </tr>
 </tbody>
@@ -124,7 +124,7 @@
 {"status":"200","message":"sucess","orderMaster":{"id":1,"orderNum":"4ffcfab8-c765-11ea-826b-6027a2b7af48","game":"Lineage M","device":"mobile","username":"gary ssu","userId":1},"userDto":{"id":1,"username":"gary ssu","address":"New Taipei City","age":20,"lastLoginTime":"2020-07-16 03:00:00"},"orderDetails":null}
 ```
 
-### Hystrix - Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used.
+### Hystrix - Monitor service display data on dashboard. When microservice_user is suspended, the fallback method will be used
 <table>
     <tr>
         <th>Application Address</th>  <th>Description</th>
@@ -144,7 +144,39 @@
 @EnableFeignClients // OpenFeign
 ```    
 * 2.add fallback annotation in your controller
-```yml
+```
 @FeignClient(value = "microservice-user",fallback = UserControllerImpl.class)
-```    
+```
 
+### Zuul - Communication between a front-end application and a REST API that are deployed separately.
+<table>
+    <tr>
+        <th>Application Address</th>  <th>Description</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>http://127.0.0.1:8222/</td> 
+            <td>Zuul Proxy</td>
+        </tr>        
+    </tbody>
+</table>
+
+* 1.add Zuul annotation in microservice_gateway app
+```java   
+@EnableZuulProxy
+```
+
+* 2. Zuul setting
+```yml
+zuul:
+  routes:
+    microservice-user:
+      path: /microservice-user #url
+      serviceId: /microservice-user #server name
+    microservice-movie:
+      path: /microservice-order #url
+      serviceId: /microservice-order #server name
+  SendErrorFilter:
+    error:
+      disable: true
+```

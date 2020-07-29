@@ -16,6 +16,7 @@
         <module>flyway_migrations</module>
         <module>hystrix_monitor</module>
         <module>microservice_gateway</module>
+        <module>microservice_config</module>
     </modules>
 
     <parent>
