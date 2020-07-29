@@ -35,6 +35,8 @@ public class OrderService {
 
             response.setOrderMaster(of(orderMaster.get()));
             response.setUserDto(userDto);
+            response.setStatus("200");
+            response.setMessage("success");
         }
 
         return response;

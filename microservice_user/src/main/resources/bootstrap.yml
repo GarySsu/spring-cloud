@@ -1,0 +1,20 @@
+# config server setting
+spring:
+  cloud:
+    config:
+      uri: http://127.0.0.1:9001/
+      name: user
+      profile: dev
+      label: master
+      discovery:
+        enabled: true
+        service-id: config-server
+# eureka client setting
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+  instance:
+    prefer-ip-address: true

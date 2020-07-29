@@ -1,17 +1,15 @@
-server:
-  port: 9011
+# config server setting
 spring:
-  application:
-    name: microservice-order
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_example?characterEncoding=UTF8
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: rootroot
-  jpa:
-    show-sql: true
-    generate-ddl: true
-    database: mysql
+  cloud:
+    config:
+      uri: http://127.0.0.1:9001/
+      name: order
+      profile: dev
+      label: master
+      discovery:
+        enabled: true
+        service-id: config-server
+# eureka client setting
 eureka:
   client:
     register-with-eureka: true # As a client, you need to register with Eureka
@@ -24,6 +22,3 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     # Modify service expiration time
     lease-expiration-duration-in-seconds: 10
-feign:
-  hystrix:
-    enabled: true
