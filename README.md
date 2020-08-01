@@ -42,6 +42,11 @@
         <td>microservice_gateway</td>  
         <td>Has a nice integration with an embedded Zuul proxy</td>
         <td>7777</td>
+    </tr>
+    <tr>
+        <td>microservice_config</td>  
+        <td>Offer DB connection for Order and User service </td>
+        <td>9001</td>
     </tr>    
     <tr>
         <td>flyway_migrations</td>  
@@ -66,6 +71,9 @@
     </dependencies>
 </dependencyManagement>
 ```  
+
+### Spring Cloud simple flow
+<img src="https://github.com/GarySsu/spring-cloud/blob/master/photo/workflow.png" width="500">
 
 ### Eureka - Create two servers, when one of them is broken, the service can keep working. 
 <table>
