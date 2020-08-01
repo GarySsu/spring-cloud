@@ -166,7 +166,7 @@
 @EnableZuulProxy
 ```
 
-* 2. Zuul setting
+* 2.Zuul setting
 ```yml
 zuul:
   routes:
