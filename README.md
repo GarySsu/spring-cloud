@@ -84,6 +84,9 @@
    </tbody>
 </table>
 
+<img src="https://github.com/GarySsu/spring-cloud/blob/master/photo/eureka.png" width="500">
+
+
 * 1.add EnableEurekaServer annotation
 ```java   
 @EnableEurekaServer
