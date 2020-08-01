@@ -1,0 +1,25 @@
+server:
+  port: 8222
+spring:
+  application:
+    name: microservice-gateway
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+  instance:
+    prefer-ip-address: true
+# zuul setting
+zuul:
+  routes:
+    microservice-user:
+      path: /microservice-user #url
+      serviceId: /microservice-user #server name
+    microservice-movie:
+      path: /microservice-order #url
+      serviceId: /microservice-order #server name
+  SendErrorFilter:
+    error:
+      disable: true
